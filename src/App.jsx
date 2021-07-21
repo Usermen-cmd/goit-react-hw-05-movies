@@ -1,6 +1,7 @@
+import { MovieServis } from 'Components/MovieServis';
 
 const App = () => {
-  return 'Hello';
+  return <MovieServis />;
 };
 
 export default App;
