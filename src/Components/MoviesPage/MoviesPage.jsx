@@ -1,9 +1,14 @@
 import { SearchBaar } from 'Components/SearchBar/SearchBar';
 import { MoviesList } from 'Components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const MoviesPage = () => {
-  const [querry, setQuerry] = useState('');
+  const location = useLocation();
+  console.log(location.search);
+  const querryHistory = new URLSearchParams(location.search).get('byName');
+
+  const [querry, setQuerry] = useState(querryHistory);
   const [films, setFilms] = useState([]);
 
   useEffect(() => {
@@ -25,7 +30,7 @@ export const MoviesPage = () => {
   return (
     <>
       <SearchBaar onSubmit={onSubmit} />
-      <MoviesList films={films} />
+      <MoviesList films={films} search={querry} />
     </>
   );
 };
