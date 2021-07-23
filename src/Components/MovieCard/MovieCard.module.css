@@ -1,0 +1,44 @@
+.container {
+  padding: 20px 15px;
+}
+.movieWrapper {
+  display: flex;
+  margin-bottom: 20px;
+}
+.movieImage {
+  object-position: center;
+  object-fit: cover;
+  width: 200px;
+  height: auto;
+}
+.contentWrapper {
+  padding: 0 30px;
+}
+.primaryHeader {
+  margin-bottom: 20px;
+}
+.secondryHeader {
+  margin-bottom: 10px;
+}
+.movieText {
+  margin-bottom: 15px;
+}
+
+.backBtn {
+  composes: btn from global;
+  margin-bottom: 20px;
+}
+.backBtn:hover {
+  background-color: rgb(69, 69, 182);
+  cursor: pointer;
+}
+.link {
+  composes: link from global;
+}
+.activeLink {
+  color: blue;
+  text-decoration: underline;
+}
+.linkWrapper {
+  padding: 10px 10px;
+}

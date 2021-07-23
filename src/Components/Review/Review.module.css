@@ -1,0 +1,11 @@
+.avatar {
+  display: inline-block;
+  width: 100px;
+  height: 127px;
+}
+.content {
+  display: inline-block;
+}
+.commentWrapper {
+  display: flex;
+}

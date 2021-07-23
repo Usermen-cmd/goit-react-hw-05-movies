@@ -1,0 +1,13 @@
+.list {
+  padding: 20px 15px;
+}
+.item {
+  margin-bottom: 20px;
+}
+.characterImg {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.name {
+  margin-bottom: 5px;
+}
