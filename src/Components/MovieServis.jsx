@@ -1,16 +1,16 @@
-import { Header } from './Header/Header';
 import { Switch, Route } from 'react-router';
+//Utils
+import { Toaster } from 'react-hot-toast';
+//Components
+import { Header } from './Header/Header';
 import { HomePage } from './HomePage/HomePage';
 import { MoviesPage } from './MoviesPage/MoviesPage';
 import { MovieCard } from './MovieCard/MovieCard';
-import { Toaster } from 'react-hot-toast';
 
 export const MovieServis = () => {
   return (
     <>
       <Header />
-      <br />
-      <hr />
       <Switch>
         <Route exact path="/">
           <HomePage />

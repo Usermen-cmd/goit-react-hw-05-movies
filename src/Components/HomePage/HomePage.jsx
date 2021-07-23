@@ -1,6 +1,7 @@
 import { MoviesList } from 'Components/MoviesList/MoviesList';
-import { fetchServise, cancelTokenSourse } from 'utils/fetchServise';
 import { useState, useEffect } from 'react';
+//Utils
+import { fetchServise } from 'utils/fetchServise';
 import toast from 'react-hot-toast';
 
 export const HomePage = () => {

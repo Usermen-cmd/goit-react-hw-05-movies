@@ -1,7 +1,9 @@
-import { SearchBaar } from 'Components/SearchBar/SearchBar';
-import { MoviesList } from 'Components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+//Components
+import { SearchBaar } from 'Components/SearchBar/SearchBar';
+import { MoviesList } from 'Components/MoviesList/MoviesList';
+//Utils
 import { fetchServise } from 'utils/fetchServise';
 import toast from 'react-hot-toast';
 
@@ -27,7 +29,8 @@ export const MoviesPage = () => {
           })
           .catch(error => {
             toast.error(
-              error.message || `филма с названием ${querryString} не найдено!`,
+              error.message ||
+                `фильмов с названием ${querryString} не найдено!`,
             );
             console.log(error);
           });

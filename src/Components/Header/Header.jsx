@@ -1,12 +1,25 @@
 import { NavLink } from 'react-router-dom';
+//Styles
+import css from './Header.module.css';
 
 export const Header = () => {
   return (
-    <header>
-      <NavLink to="/" style={{ marginRight: '20px' }}>
+    <header className={css.header}>
+      <NavLink
+        exact
+        to="/"
+        className={css.link}
+        activeClassName={css.activeLink}
+      >
         Home
       </NavLink>
-      <NavLink to="/Movies">Movies</NavLink>
+      <NavLink
+        to="/Movies"
+        className={css.link}
+        activeClassName={css.activeLink}
+      >
+        Movies
+      </NavLink>
     </header>
   );
 };

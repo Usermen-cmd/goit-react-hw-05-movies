@@ -1,0 +1,16 @@
+.list {
+  padding: 20px 10px;
+}
+.link {
+  font-size: 16px;
+  line-height: 1.4;
+  color: #212121;
+  text-decoration: none;
+  transition: color 200ms linear;
+}
+.link:hover {
+  color: rgb(49, 49, 172);
+}
+.link:visited {
+  color: rgb(184, 53, 30);
+}

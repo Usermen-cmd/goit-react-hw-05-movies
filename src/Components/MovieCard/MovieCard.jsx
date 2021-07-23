@@ -1,7 +1,8 @@
 import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { fetchServise } from 'utils/fetchServise';
+//Utils
 import toast from 'react-hot-toast';
+import { fetchServise } from 'utils/fetchServise';
 
 export const MovieCard = () => {
   const { movieId } = useParams();

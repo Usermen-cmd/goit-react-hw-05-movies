@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const cancelTokenSourse = axios.CancelToken.source();
+export const CancelTokenSourse = axios.CancelToken.source();
 
 const fetchFilms = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
@@ -16,15 +16,17 @@ export const fetchServise = ({
   movieId = false,
 }) => {
   const canselOptions = {
-    cancelToken: cancelTokenSourse.token,
+    cancelToken: CancelTokenSourse.token,
   };
 
   if (all) {
     return fetchFilms.get('trending/all/day', canselOptions);
   }
+
   if (querryString) {
     return fetchFilms.get(`search/movie?query=${querryString}`, canselOptions);
   }
+
   if (movieId) {
     return fetchFilms.get(`movie/${movieId}`, canselOptions);
   }

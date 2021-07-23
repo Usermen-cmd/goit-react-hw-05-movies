@@ -1,4 +1,9 @@
 import { useState } from 'react';
+//Components
+import { AiOutlineSearch } from 'react-icons/ai';
+
+//Styles
+import css from './SearchBar.module.css';
 
 export const SearchBaar = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState('');
@@ -14,9 +19,19 @@ export const SearchBaar = ({ onSubmit }) => {
   }
 
   return (
-    <form onSubmit={onSubmitForm}>
-      <input type="text" name="search" value={inputValue} onChange={onChange} />
-      <button type="submit">search</button>
+    <form onSubmit={onSubmitForm} className={css.form}>
+      <input
+        type="text"
+        name="search"
+        value={inputValue}
+        onChange={onChange}
+        className={css.input}
+        placeholder="Enter film"
+      />
+      <button type="submit" className={css.button}>
+        Search
+        <AiOutlineSearch size="15" style={{ marginLeft: '6px' }} />
+      </button>
     </form>
   );
 };
