@@ -2,35 +2,51 @@ import { SearchBaar } from 'Components/SearchBar/SearchBar';
 import { MoviesList } from 'Components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { fetchServise } from 'utils/fetchServise';
+import toast from 'react-hot-toast';
 
 export const MoviesPage = () => {
   const location = useLocation();
-  console.log(location.search);
-  const querryHistory = new URLSearchParams(location.search).get('byName');
+  const querryHistory = new URLSearchParams(location.search).get('searchBy');
 
-  const [querry, setQuerry] = useState(querryHistory);
+  const [querryString, setQuerry] = useState(querryHistory);
   const [films, setFilms] = useState([]);
 
   useEffect(() => {
-    if (querry) {
+    if (querryString) {
       (() => {
-        fetch(
-          `https://api.themoviedb.org/3/search/movie?api_key=3e16f8585bb0e5d3ab479eecb997ec50&query=${querry}`,
-        )
-          .then(r => r.json())
-          .then(d => setFilms(d.results));
+        fetchServise({
+          querryString,
+        })
+          .then(d => {
+            if (d.status === 200 && d.data.results.length > 0) {
+              setFilms(d.data.results);
+              return;
+            }
+            throw Error();
+          })
+          .catch(error => {
+            toast.error(
+              error.message || `филма с названием ${querryString} не найдено!`,
+            );
+            console.log(error);
+          });
       })();
     }
-  }, [querry]);
+  }, [querryString]);
 
   function onSubmit(event, inputValue) {
     event.preventDefault();
-    setQuerry(inputValue);
+    if (inputValue) {
+      setQuerry(inputValue);
+      return;
+    }
+    toast.error('Строка не должна быть пустой');
   }
   return (
     <>
       <SearchBaar onSubmit={onSubmit} />
-      <MoviesList films={films} search={querry} />
+      <MoviesList films={films} search={querryString} />
     </>
   );
 };

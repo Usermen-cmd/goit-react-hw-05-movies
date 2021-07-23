@@ -10,7 +10,7 @@ export const MoviesList = ({ films, search }) => {
             to={{
               pathname: `/Movie/${el.id}`,
               state: { from: location },
-              search: `byName=${search}`,
+              search: `searchBy=${search}`,
             }}
             key={el.id}
           >

@@ -1,5 +1,7 @@
 import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { fetchServise } from 'utils/fetchServise';
+import toast from 'react-hot-toast';
 
 export const MovieCard = () => {
   const { movieId } = useParams();
@@ -11,20 +13,20 @@ export const MovieCard = () => {
 
   useEffect(() => {
     (() => {
-      fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=3e16f8585bb0e5d3ab479eecb997ec50&language=en-US`,
-      )
-        .then(r => {
-          if (r.status !== 200) {
-            throw Error();
-          }
-          return r.json();
-        })
+      fetchServise({ movieId })
         .then(d => {
-          setMovie(d);
-          setGenres(d.genres.map(el => el.name));
+          if (d.status === 200) {
+            setMovie(d.data);
+            setGenres(d.data.genres.map(el => el.name));
+            return;
+          }
+          throw Error();
         })
-        .catch(e => setError(e));
+        .catch(error => {
+          toast.error(error.messsage);
+          setError(error);
+          console.log(error);
+        });
     })();
   }, [movieId]);
 

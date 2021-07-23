@@ -1,17 +1,28 @@
 import { MoviesList } from 'Components/MoviesList/MoviesList';
-
+import { fetchServise, cancelTokenSourse } from 'utils/fetchServise';
 import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 export const HomePage = () => {
   const [popularFilms, setPopularFilms] = useState([]);
 
   useEffect(() => {
     (() => {
-      fetch(
-        'https://api.themoviedb.org/3/trending/all/day?api_key=3e16f8585bb0e5d3ab479eecb997ec50',
-      )
-        .then(r => r.json())
-        .then(d => setPopularFilms(d.results));
+      fetchServise({ all: true })
+        .then(d => {
+          if (d.status === 200) {
+            setPopularFilms(d.data.results);
+            return;
+          }
+          throw Error();
+        })
+        .catch(error => {
+          toast.error(
+            error.message ||
+              'из за короновируса фильмы закончились, смотрите блогеров на ютубе',
+          );
+          console.log(error);
+        });
     })();
   }, []);
 
