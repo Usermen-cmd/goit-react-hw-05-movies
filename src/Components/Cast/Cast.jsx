@@ -2,6 +2,7 @@ import { fetchServise } from 'utils/fetchServise';
 import { useEffect, useState } from 'react';
 //Utils
 import toast from 'react-hot-toast';
+import settings from 'utils/sliderSettings';
 import PropTypes from 'prop-types';
 //Components
 import defaultImg from 'defaultImg/default-img.png';
@@ -11,14 +12,6 @@ import css from './Cast.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 3,
-  arrows: true,
-};
 export const Cast = ({ movieId }) => {
   const [cast, setCast] = useState([]);
 
