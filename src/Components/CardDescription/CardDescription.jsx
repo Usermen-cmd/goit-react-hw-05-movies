@@ -4,7 +4,8 @@ import defaultImg from 'defaultImg/default-img.jpg';
 import { BiArrowBack } from 'react-icons/bi';
 //Styles
 import css from './CardDescription.module.css';
-import { LogosCompanies } from 'Components/LogosCompanies/LogosCompanies';
+//Utils
+import PropTypes from 'prop-types';
 
 export const CardDescription = ({ movie, genres }) => {
   const history = useHistory();
@@ -44,9 +45,18 @@ export const CardDescription = ({ movie, genres }) => {
           <p className={css.movieText}>
             {(movie.vote_average / 10) * 100 + '%'}
           </p>
-          <LogosCompanies logos={movie.production_companies} />
         </div>
       </div>
     </div>
   );
+};
+
+CardDescription.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    poster_path: PropTypes.isRequired,
+  }).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string),
 };

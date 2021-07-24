@@ -1,9 +1,24 @@
 import { fetchServise } from 'utils/fetchServise';
 import { useEffect, useState } from 'react';
+//Utils
 import toast from 'react-hot-toast';
+import PropTypes from 'prop-types';
+//Components
 import defaultImg from 'defaultImg/default-img.png';
+import Slider from 'react-slick';
+//Styles
 import css from './Cast.module.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 3,
+  arrows: true,
+};
 export const Cast = ({ movieId }) => {
   const [cast, setCast] = useState([]);
 
@@ -22,19 +37,26 @@ export const Cast = ({ movieId }) => {
       });
   }, [movieId]);
   return (
-    <ul className={css.list}>
-      {cast.map(el => {
-        const img = el.profile_path
-          ? `https://image.tmdb.org/t/p/w500${el.profile_path}`
-          : defaultImg;
-        return (
-          <li key={el.id} className={css.item}>
-            <img className={css.characterImg} src={img} alt={el.name} />
-            <p className={css.name}>{el.name}</p>
-            <p>{el.character}</p>
-          </li>
-        );
-      })}
-    </ul>
+    <div className={css.list}>
+      <h3 className={css.header}>Cast</h3>
+      <Slider {...settings} width="600px">
+        {cast.map(el => {
+          const img = el.profile_path
+            ? `https://image.tmdb.org/t/p/w500${el.profile_path}`
+            : defaultImg;
+          return (
+            <div key={el.id}>
+              <p className={css.name}>{el.name}</p>
+              <p className={css.name}>{el.character}</p>
+              <img src={img} alt={el.name} className={css.characterImg} />
+            </div>
+          );
+        })}
+      </Slider>
+    </div>
   );
+};
+
+Cast.propTypes = {
+  movieId: PropTypes.string.isRequired,
 };

@@ -70,3 +70,11 @@ ol {
   text-decoration: none;
   transition: color 200ms linear;
 }
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+  font-size: 30px !important;
+}
+.slick-dots li button:before {
+  font-size: 8px !important;
+}

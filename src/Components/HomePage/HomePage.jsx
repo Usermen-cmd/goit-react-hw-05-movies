@@ -1,8 +1,9 @@
-import { MoviesList } from 'Components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 //Utils
 import { fetchServise } from 'utils/fetchServise';
 import toast from 'react-hot-toast';
+//Components
+import { MoviesList } from 'Components/MoviesList/MoviesList';
 import Skeleton from 'react-loading-skeleton';
 
 const HomePage = () => {

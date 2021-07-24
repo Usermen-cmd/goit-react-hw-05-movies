@@ -11,12 +11,12 @@ export const CardLinks = () => {
         className={css.link}
         activeClassName={css.activeLink}
         to={{
-          pathname: `${url}/Casts`,
+          pathname: `${url}/Cast`,
           state: { from: location },
           search: location.search,
         }}
       >
-        Casts
+        Cast
       </NavLink>
       <NavLink
         exact

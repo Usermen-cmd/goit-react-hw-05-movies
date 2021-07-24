@@ -1,9 +1,13 @@
-import { fetchServise } from 'utils/fetchServise';
 import { useEffect, useState } from 'react';
+//Utils
+import { fetchServise } from 'utils/fetchServise';
 import toast from 'react-hot-toast';
-import css from './Review.module.css';
 import { setDate } from 'utils/setDate';
+import PropTypes from 'prop-types';
+//Components
 import defaultImg from 'defaultImg/default-img.png';
+//Styles
+import css from './Review.module.css';
 
 export const Review = ({ movieId }) => {
   const [reviews, setReviews] = useState([]);
@@ -51,4 +55,8 @@ export const Review = ({ movieId }) => {
   ) : (
     <p>Reviews are missing</p>
   );
+};
+
+Review.propTypes = {
+  movieId: PropTypes.string.isRequired,
 };

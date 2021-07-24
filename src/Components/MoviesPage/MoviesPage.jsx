@@ -3,10 +3,10 @@ import { useLocation } from 'react-router-dom';
 //Components
 import { SearchBaar } from 'Components/SearchBar/SearchBar';
 import { MoviesList } from 'Components/MoviesList/MoviesList';
+import Skeleton from 'react-loading-skeleton';
 //Utils
 import { fetchServise } from 'utils/fetchServise';
 import toast from 'react-hot-toast';
-import Skeleton from 'react-loading-skeleton';
 
 const MoviesPage = () => {
   const location = useLocation();

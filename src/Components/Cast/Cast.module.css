@@ -1,16 +1,23 @@
+.header {
+  margin-bottom: 20px;
+  text-align: center;
+}
 .list {
-  padding: 20px 15px;
+  padding: 20px 40px;
+  padding-bottom: 100px;
+  width: 80%;
+  margin: 0 auto;
 }
 .item {
   margin-bottom: 20px;
 }
 .characterImg {
-  width: 100px;
-  height: 150px;
-  object-fit: cover;
-  object-position: center;
-  margin-bottom: 10px;
+  width: 200px;
+  height: 300px;
+  margin: 0 auto;
 }
 .name {
+  width: 200px;
+  margin: 0 auto;
   margin-bottom: 5px;
 }

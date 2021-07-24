@@ -1,5 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
+//Styles
 import css from './MoviesList.module.css';
+//Utils
+import PropTypes from 'prop-types';
 
 export const MoviesList = ({ films, search }) => {
   const searchString = search ? `searchBy=${search}` : '';
@@ -25,4 +28,13 @@ export const MoviesList = ({ films, search }) => {
       })}
     </ul>
   );
+};
+MoviesList.propType = {
+  search: PropTypes.string,
+  films: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    }),
+  ),
 };

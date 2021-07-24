@@ -1,9 +1,10 @@
 import { useState } from 'react';
 //Components
 import { AiOutlineSearch } from 'react-icons/ai';
-
 //Styles
 import css from './SearchBar.module.css';
+//Utils
+import PropTypes from 'prop-types'
 
 export const SearchBaar = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState('');
@@ -35,3 +36,8 @@ export const SearchBaar = ({ onSubmit }) => {
     </form>
   );
 };
+
+
+SearchBaar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+}

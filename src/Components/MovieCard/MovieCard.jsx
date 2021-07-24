@@ -45,7 +45,7 @@ const MovieCard = () => {
       )}
 
       <Switch>
-        <Route path={`${path}/Casts`}>
+        <Route path={`${path}/Cast`}>
           <Cast movieId={movieId} />
         </Route>
         <Route path={`${path}/Reviews`}>
