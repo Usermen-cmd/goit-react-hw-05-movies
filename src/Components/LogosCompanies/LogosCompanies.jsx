@@ -14,8 +14,18 @@ export const LogosCompanies = ({ logos }) => {
           ? `https://image.tmdb.org/t/p/w300${logo.logo_path}`
           : defaultImg;
         return (
-          <li key={logo.id}>
+          <li
+            key={logo.id}
+            style={{
+              minHeight: '180px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
             <img style={{ width: '100px' }} src={logoImg} alt={logo.name} />
+            <p>{logo.name}</p>
           </li>
         );
       })}

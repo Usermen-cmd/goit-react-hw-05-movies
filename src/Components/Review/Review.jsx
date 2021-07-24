@@ -25,7 +25,7 @@ export const Review = ({ movieId }) => {
     })();
   }, [movieId]);
 
-  return (
+  return reviews.length > 0 ? (
     <ul className={css.list}>
       {reviews.map(el => {
         const dateOfPost = setDate(el.created_at);
@@ -48,5 +48,7 @@ export const Review = ({ movieId }) => {
         );
       })}
     </ul>
+  ) : (
+    <p>Reviews are missing</p>
   );
 };
