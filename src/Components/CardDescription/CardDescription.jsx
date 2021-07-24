@@ -4,6 +4,7 @@ import defaultImg from 'defaultImg/default-img.jpg';
 import { BiArrowBack } from 'react-icons/bi';
 //Styles
 import css from './CardDescription.module.css';
+import { LogosCompanies } from 'Components/LogosCompanies/LogosCompanies';
 
 export const CardDescription = ({ movie, genres }) => {
   const history = useHistory();
@@ -39,6 +40,11 @@ export const CardDescription = ({ movie, genres }) => {
           <p className={css.movieText}>{movie.overview}</p>
           <h3 className={css.secondryHeader}>Genres</h3>
           <p className={css.movieText}>{genres.join(' ')}</p>
+          <h3 className={css.secondryHeader}>Rating</h3>
+          <p className={css.movieText}>
+            {(movie.vote_average / 10) * 100 + '%'}
+          </p>
+          <LogosCompanies logos={movie.production_companies} />
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@
   object-position: center;
   object-fit: cover;
   width: 200px;
-  height: auto;
+  height: 300px;
 }
 .contentWrapper {
   padding: 0 30px;
