@@ -9,7 +9,7 @@ import { CardLinks } from 'Components/CardLinks/CardLinks';
 import toast from 'react-hot-toast';
 import { fetchServise } from 'utils/fetchServise';
 
-export const MovieCard = () => {
+const MovieCard = () => {
   const { path } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
@@ -56,3 +56,4 @@ export const MovieCard = () => {
     </>
   );
 };
+export default MovieCard;

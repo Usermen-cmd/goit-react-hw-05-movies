@@ -6,23 +6,27 @@ import { MoviesList } from 'Components/MoviesList/MoviesList';
 //Utils
 import { fetchServise } from 'utils/fetchServise';
 import toast from 'react-hot-toast';
+import Skeleton from 'react-loading-skeleton';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const location = useLocation();
   const querryHistory = new URLSearchParams(location.search).get('searchBy');
 
   const [querryString, setQuerry] = useState(querryHistory);
   const [films, setFilms] = useState([]);
+  const [status, setStatus] = useState(true);
 
   useEffect(() => {
     if (querryString) {
       (() => {
+        setStatus(false);
         fetchServise({
           querryString,
         })
           .then(d => {
             if (d.status === 200 && d.data.results.length > 0) {
               setFilms(d.data.results);
+              setStatus(true);
               return;
             }
             throw Error();
@@ -49,7 +53,16 @@ export const MoviesPage = () => {
   return (
     <>
       <SearchBaar onSubmit={onSubmit} />
-      <MoviesList films={films} search={querryString} />
+      {status ? (
+        <MoviesList films={films} search={querryString} />
+      ) : (
+        <Skeleton
+          count={10}
+          width={300}
+          style={{ display: 'block', marginTop: '10px' }}
+        />
+      )}
     </>
   );
 };
+export default MoviesPage;

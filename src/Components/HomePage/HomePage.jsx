@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 //Utils
 import { fetchServise } from 'utils/fetchServise';
 import toast from 'react-hot-toast';
+import Skeleton from 'react-loading-skeleton';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [popularFilms, setPopularFilms] = useState([]);
 
   useEffect(() => {
@@ -27,5 +28,14 @@ export const HomePage = () => {
     })();
   }, []);
 
-  return <MoviesList films={popularFilms} />;
+  return popularFilms.length > 0 ? (
+    <MoviesList films={popularFilms} />
+  ) : (
+    <Skeleton
+      count={10}
+      width={300}
+      style={{ display: 'block', marginTop: '10px' }}
+    />
+  );
 };
+export default HomePage;
