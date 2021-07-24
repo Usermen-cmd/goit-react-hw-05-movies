@@ -2,7 +2,7 @@ import { fetchServise } from 'utils/fetchServise';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import css from './Review.module.css';
-import { format } from 'date-fns';
+import { setDate } from 'utils/setDate';
 
 export const Review = ({ movieId }) => {
   const [reviews, setReviews] = useState([]);
@@ -27,8 +27,8 @@ export const Review = ({ movieId }) => {
   return (
     <ul className={css.list}>
       {reviews.map(el => {
-        const date = Date.parse(el.created_at);
-        const normalizeDate = format(new Date(date), "dd-MM-yyyy' 'HH:mm:ss");
+        const dateOfPost = setDate(el.created_at);
+
         return (
           <li key={el.id} className={css.item}>
             <div className={css.commentWrapper}>
@@ -41,7 +41,7 @@ export const Review = ({ movieId }) => {
             </div>
             <div>
               <h3 className={css.userName}>{el.author_details.username}</h3>
-              <span className={css.dataCreate}>{normalizeDate}</span>
+              <span className={css.dataCreate}>{dateOfPost}</span>
               <p className={css.content}>{el.content}</p>
             </div>
           </li>
