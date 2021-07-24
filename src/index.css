@@ -78,3 +78,7 @@ ol {
 .slick-dots li button:before {
   font-size: 8px !important;
 }
+.slick-track {
+  display: flex !important;
+  align-items: baseline !important;
+}

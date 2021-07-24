@@ -29,7 +29,7 @@ export const Cast = ({ movieId }) => {
         console.log(error);
       });
   }, [movieId]);
-  return (
+  return cast.length > 0 ? (
     <div className={css.list}>
       <h3 className={css.header}>Cast</h3>
       <Slider {...settings} width="600px">
@@ -47,6 +47,8 @@ export const Cast = ({ movieId }) => {
         })}
       </Slider>
     </div>
+  ) : (
+    <p>Cast are missing</p>
   );
 };
 
