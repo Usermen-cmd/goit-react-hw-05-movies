@@ -1,0 +1,11 @@
+.link {
+  composes: link from global;
+  display: block;
+}
+.activeLink {
+  color: blue;
+  text-decoration: underline;
+}
+.linkWrapper {
+  padding: 10px 10px;
+}

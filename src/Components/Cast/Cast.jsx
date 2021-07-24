@@ -1,7 +1,7 @@
 import { fetchServise } from 'utils/fetchServise';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-
+import defaultImg from 'defaultImg/default-img.png';
 import css from './Cast.module.css';
 
 export const Cast = ({ movieId }) => {
@@ -24,13 +24,12 @@ export const Cast = ({ movieId }) => {
   return (
     <ul className={css.list}>
       {cast.map(el => {
+        const img = el.profile_path
+          ? `https://image.tmdb.org/t/p/w500${el.profile_path}`
+          : defaultImg;
         return (
           <li key={el.id} className={css.item}>
-            <img
-              className={css.characterImg}
-              src={`https://image.tmdb.org/t/p/w500${el.profile_path}`}
-              alt={el.name}
-            />
+            <img className={css.characterImg} src={img} alt={el.name} />
             <p className={css.name}>{el.name}</p>
             <p>{el.character}</p>
           </li>

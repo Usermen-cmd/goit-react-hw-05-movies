@@ -6,6 +6,9 @@
 }
 .characterImg {
   width: 100px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
   margin-bottom: 10px;
 }
 .name {

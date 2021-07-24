@@ -32,13 +32,3 @@
   background-color: rgb(69, 69, 182);
   cursor: pointer;
 }
-.link {
-  composes: link from global;
-}
-.activeLink {
-  color: blue;
-  text-decoration: underline;
-}
-.linkWrapper {
-  padding: 10px 10px;
-}
