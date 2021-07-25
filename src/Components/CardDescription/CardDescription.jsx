@@ -43,7 +43,7 @@ export const CardDescription = ({ movie, genres }) => {
           <p className={css.movieText}>{genres.join(' ')}</p>
           <h3 className={css.secondryHeader}>Rating</h3>
           <p className={css.movieText}>
-            {(movie.vote_average / 10) * 100 + '%'}
+            {Math.floor((movie.vote_average / 10) * 100) + '%'}
           </p>
         </div>
       </div>

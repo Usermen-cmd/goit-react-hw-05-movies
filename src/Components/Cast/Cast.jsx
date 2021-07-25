@@ -29,6 +29,7 @@ export const Cast = ({ movieId }) => {
         console.log(error);
       });
   }, [movieId]);
+
   return cast.length > 0 ? (
     <div className={css.list}>
       <h3 className={css.header}>Cast</h3>
