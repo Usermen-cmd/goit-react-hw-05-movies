@@ -41,7 +41,12 @@ export const Review = ({ movieId }) => {
         return (
           <li key={el.id} className={css.item}>
             <div className={css.commentWrapper}>
-              <img className={css.avatar} src={avatar} alt={el.author} />
+              <img
+                className={css.avatar}
+                src={avatar}
+                alt={el.author}
+                onError={e => (e.target.src = defaultImg)}
+              />
               <p>Raiting</p>
               <ReactStars
                 count={10}
