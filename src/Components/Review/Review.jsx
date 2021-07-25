@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { setDate } from 'utils/setDate';
 import PropTypes from 'prop-types';
 //Components
-import StarRatingComponent from 'react-star-rating-component';
+import ReactStars from 'react-rating-stars-component';
 import defaultImg from 'defaultImg/default-img.png';
 //Styles
 import css from './Review.module.css';
@@ -43,11 +43,12 @@ export const Review = ({ movieId }) => {
             <div className={css.commentWrapper}>
               <img className={css.avatar} src={avatar} alt={el.author} />
               <p>Raiting</p>
-              <StarRatingComponent
-                name="rate"
-                starCount={10}
+              <ReactStars
+                count={10}
+                size={17}
                 value={el.author_details.rating}
-                editing={false}
+                edit={false}
+                a11y={false}
               />
             </div>
             <div>
