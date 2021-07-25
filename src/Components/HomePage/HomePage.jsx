@@ -30,7 +30,12 @@ const HomePage = () => {
   }, []);
 
   return popularFilms.length > 0 ? (
-    <MoviesList films={popularFilms} />
+    <>
+      <h2 style={{ padding: '10px 10px', color: '#212121' }}>
+        Popularity movies
+      </h2>
+      <MoviesList films={popularFilms} />
+    </>
   ) : (
     <Skeleton
       count={10}
