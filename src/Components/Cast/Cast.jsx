@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import defaultImg from 'defaultImg/default-img.png';
 import Slider from 'react-slick';
 //Styles
+import { setImage } from 'utils/setImage';
 import css from './Cast.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -35,14 +36,15 @@ export const Cast = ({ movieId }) => {
       <h3 className={css.header}>Cast</h3>
       <Slider {...settings} width="600px">
         {cast.map(el => {
-          const img = el.profile_path
-            ? `https://image.tmdb.org/t/p/w500${el.profile_path}`
-            : defaultImg;
           return (
             <div key={el.id}>
               <p className={css.name}>{el.name}</p>
               <p className={css.name}>{el.character}</p>
-              <img src={img} alt={el.name} className={css.characterImg} />
+              <img
+                src={setImage(el.profile_path, defaultImg)}
+                alt={el.name}
+                className={css.characterImg}
+              />
             </div>
           );
         })}

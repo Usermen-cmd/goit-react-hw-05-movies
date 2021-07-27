@@ -5,9 +5,15 @@ import { BiArrowBack } from 'react-icons/bi';
 //Styles
 import css from './CardDescription.module.css';
 //Utils
+import { setImage } from 'utils/setImage';
+import { setRating } from 'utils/setRating';
 import PropTypes from 'prop-types';
 
-export const CardDescription = ({ movie, genres }) => {
+export const CardDescription = ({ movie }) => {
+  const genres = movie.genres.map((genre, index, arr) =>
+    index === arr.length - 1 ? genre.name : genre.name + ', ',
+  );
+
   const history = useHistory();
   const location = useLocation();
 
@@ -28,11 +34,7 @@ export const CardDescription = ({ movie, genres }) => {
       <div className={css.movieWrapper}>
         <img
           className={css.movieImage}
-          src={
-            movie.poster_path
-              ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-              : defaultImg
-          }
+          src={setImage(movie.poster_path, defaultImg)}
           alt={movie.title}
         />
         <div className={css.contentWrapper}>
@@ -40,11 +42,9 @@ export const CardDescription = ({ movie, genres }) => {
           <h3 className={css.secondryHeader}>Overview</h3>
           <p className={css.movieText}>{movie.overview}</p>
           <h3 className={css.secondryHeader}>Genres</h3>
-          <p className={css.movieText}>{genres.join(' ')}</p>
+          <p className={css.movieText}>{genres}</p>
           <h3 className={css.secondryHeader}>Rating</h3>
-          <p className={css.movieText}>
-            {Math.floor((movie.vote_average / 10) * 100) + '%'}
-          </p>
+          <p className={css.movieText}>{setRating(movie.vote_average)}</p>
         </div>
       </div>
     </div>

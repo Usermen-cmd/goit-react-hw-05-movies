@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 //Utils
+import { setImage } from 'utils/setImage';
 import { fetchServise } from 'utils/fetchServise';
 import toast from 'react-hot-toast';
 import { setDate } from 'utils/setDate';
@@ -34,16 +35,12 @@ export const Review = ({ movieId }) => {
     <ul className={css.list}>
       {reviews.map(el => {
         const dateOfPost = setDate(el.created_at);
-        const avatar = el.author_details.avatar_path
-          ? `https://image.tmdb.org/t/p/w500${el.author_details.avatar_path}`
-          : defaultImg;
-
         return (
           <li key={el.id} className={css.item}>
             <div className={css.commentWrapper}>
               <img
                 className={css.avatar}
-                src={avatar}
+                src={setImage(el.author_details.avatar_path, defaultImg)}
                 alt={el.author}
                 onError={e => (e.target.src = defaultImg)}
               />

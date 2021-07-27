@@ -13,7 +13,6 @@ const MovieCard = () => {
   const { path } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const [genres, setGenres] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -22,7 +21,6 @@ const MovieCard = () => {
         .then(d => {
           if (d.status === 200) {
             setMovie(d.data);
-            setGenres(d.data.genres.map(el => el.name));
             return;
           }
           throw Error();
@@ -39,7 +37,7 @@ const MovieCard = () => {
     <>
       {movie && (
         <>
-          <CardDescription movie={movie} genres={genres} />
+          <CardDescription movie={movie} />
           <CardLinks />
         </>
       )}
