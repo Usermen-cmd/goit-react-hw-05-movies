@@ -2,7 +2,7 @@ import { fetchServise } from 'utils/fetchServise';
 import { useEffect, useState } from 'react';
 //Utils
 import toast from 'react-hot-toast';
-import settings from 'utils/sliderSettings';
+import { setAdaptiveSettings } from 'utils/sliderSettings';
 import PropTypes from 'prop-types';
 //Components
 import defaultImg from 'defaultImg/default-img.png';
@@ -34,7 +34,7 @@ export const Cast = ({ movieId }) => {
   return cast.length > 0 ? (
     <div className={css.list}>
       <h3 className={css.header}>Cast</h3>
-      <Slider {...settings} width="600px">
+      <Slider {...setAdaptiveSettings(cast.length)} width="600px">
         {cast.map(el => {
           return (
             <div key={el.id}>
