@@ -5,6 +5,7 @@ import { Cast } from 'Components/Cast/Cast';
 import { Review } from 'Components/Review/Review';
 import { CardDescription } from 'Components/CardDescription/CardDescription';
 import { CardLinks } from 'Components/CardLinks/CardLinks';
+import { ErrorPage } from 'Components/ErrorPage/ErrorPage';
 //Utils
 import toast from 'react-hot-toast';
 import { fetchServise } from 'utils/fetchServise';
@@ -26,9 +27,9 @@ const MovieCard = () => {
           throw Error();
         })
         .catch(error => {
-          toast.error(error.messsage);
+          toast.error(error.message);
           setError(error);
-          console.log(error);
+          console.dir(error);
         });
     })();
   }, [movieId]);
@@ -49,8 +50,8 @@ const MovieCard = () => {
         <Route path={`${path}/Reviews`}>
           <Review movieId={movieId} />
         </Route>
+        <Route>{error && <ErrorPage />}</Route>
       </Switch>
-      {error && <p>404 error page not found</p>}
     </>
   );
 };

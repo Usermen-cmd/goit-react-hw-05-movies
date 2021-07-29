@@ -4,9 +4,7 @@ import css from './MoviesList.module.css';
 //Utils
 import PropTypes from 'prop-types';
 
-export const MoviesList = ({ films, search }) => {
-  const searchString = search ? `searchBy=${search}` : '';
-
+export const MoviesList = ({ films }) => {
   const location = useLocation();
   return (
     <ul className={css.list}>
@@ -18,7 +16,6 @@ export const MoviesList = ({ films, search }) => {
               to={{
                 pathname: `/Movie/${el.id}`,
                 state: { from: location },
-                search: searchString,
               }}
             >
               {el.title}

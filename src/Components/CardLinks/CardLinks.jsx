@@ -12,8 +12,7 @@ export const CardLinks = () => {
         activeClassName={css.activeLink}
         to={{
           pathname: `${url}/Cast`,
-          state: { from: location },
-          search: location.search,
+          state: { from: location.state.from },
         }}
       >
         Cast
@@ -24,8 +23,7 @@ export const CardLinks = () => {
         activeClassName={css.activeLink}
         to={{
           pathname: `${url}/Reviews`,
-          state: { from: location },
-          search: location.search,
+          state: { from: location.state.from },
         }}
       >
         Reviews

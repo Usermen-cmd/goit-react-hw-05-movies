@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 //Components
 import { SearchBaar } from 'Components/SearchBar/SearchBar';
 import { MoviesList } from 'Components/MoviesList/MoviesList';
@@ -10,8 +10,8 @@ import toast from 'react-hot-toast';
 
 const MoviesPage = () => {
   const location = useLocation();
+  const history = useHistory();
   const querryHistory = new URLSearchParams(location.search).get('searchBy');
-
   const [querryString, setQuerry] = useState(querryHistory);
   const [films, setFilms] = useState([]);
   const [status, setStatus] = useState(true);
@@ -46,6 +46,10 @@ const MoviesPage = () => {
     event.preventDefault();
     if (inputValue) {
       setQuerry(inputValue);
+      history.push({
+        ...location,
+        search: `searchBy=${inputValue}`,
+      });
       return;
     }
     toast.error('Строка не должна быть пустой');
@@ -54,7 +58,7 @@ const MoviesPage = () => {
     <>
       <SearchBaar onSubmit={onSubmit} />
       {status ? (
-        <MoviesList films={films} search={querryString} />
+        <MoviesList films={films} />
       ) : (
         <Skeleton
           count={10}

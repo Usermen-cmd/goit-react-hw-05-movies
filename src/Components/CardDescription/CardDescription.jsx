@@ -18,12 +18,8 @@ export const CardDescription = ({ movie }) => {
   const location = useLocation();
 
   function goBack() {
-    if (location.state.from.pathname.includes('/Movie')) {
-      const search = location.search;
-      history.push(`/Movies${search}`);
-      return;
-    }
-    history.goBack();
+    const locationState = location.state.from;
+    history.push(locationState);
   }
   return (
     <div className={css.container}>
