@@ -21,6 +21,7 @@ export const CardDescription = ({ movie }) => {
     const locationState = location.state.from;
     history.push(locationState);
   }
+
   return (
     <div className={css.container}>
       <button type="button" onClick={goBack} className={css.backBtn}>
