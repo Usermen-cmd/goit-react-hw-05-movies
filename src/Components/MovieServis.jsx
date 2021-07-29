@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 //Utils
 import { Toaster } from 'react-hot-toast';
@@ -24,6 +24,7 @@ export const MovieServis = () => {
           <Route path="/Movie/:movieId">
             <MovieCard />
           </Route>
+          <Redirect to="/" />
         </Suspense>
       </Switch>
       <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
